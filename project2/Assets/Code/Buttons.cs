@@ -10,6 +10,7 @@ public class Buttons : MonoBehaviour
     public GameObject HowToButton;
     public GameObject NextButton;
     //public GameObject pauseMenu;
+    //public GameObject resumeButton;
 
     public void startBtn()
     {
@@ -23,13 +24,13 @@ public class Buttons : MonoBehaviour
         }
     }
 
-    public void quigBtn()
+    public void quitBtn()
     {
 #if !UNITY_WEBGL
         Application.Quit();
 #endif
 #if UNITY_WEBGL
-        SceneManager.LoadScene("StartGame");
+        SceneManager.LoadScene("TitleScreen");
 #endif
     }
 
@@ -43,15 +44,31 @@ public class Buttons : MonoBehaviour
         SceneManager.LoadScene("HowTo2Scene");
     }
 
-    //void pauseBtn()
+    //public void pauseBtn()
     //{
-    //    pauseMenu.SetActive(true);
+    //    //pauseMenu.SetActive(true);
     //    Time.timeScale = 0f;
     //}
 
-    //void resumeBtn()
+    //public void resumeBtn()
     //{
-    //    pauseMenu.SetActive(false);
+    //    //pauseMenu.SetActive(false);
     //    Time.timeScale = 1.0f;
     //}
+
+    void Update()
+    {
+#if !UNITY_WEBGL
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+#endif
+
+#if UNITY_WEBGL
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            SceneManager.LoadScene("TitleScreen");
+        }
+#endif
+    }
 }

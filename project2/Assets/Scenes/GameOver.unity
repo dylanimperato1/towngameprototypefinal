@@ -1291,7 +1291,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1400849366}
         m_TargetAssemblyTypeName: Buttons, Assembly-CSharp
-        m_MethodName: quigBtn
+        m_MethodName: quitBtn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -12,6 +12,7 @@ public class TimerScript : MonoBehaviour
 
     public TextMeshProUGUI timerText;
 
+    public TextMeshProUGUI capText;
     public TextMeshProUGUI foodText;
     public TextMeshProUGUI moneyText;
     public TextMeshProUGUI populationText;
@@ -115,6 +116,7 @@ public class TimerScript : MonoBehaviour
     //0             1       2    3     4    5
     void UpdateResourceDisplay()
     {
+        capText.text = "Max: " + PublicVars.Instance.resourceCap;
         foodText.text = "Food: " + PublicVars.Instance.playerResources[3] + " (" + ((2 * PublicVars.Instance.buildingCounts[3]) + (-2 * PublicVars.Instance.buildingCounts[0]) + (-2 * PublicVars.Instance.buildingCounts[4])) + ")";
         moneyText.text = "Money: " + PublicVars.Instance.playerResources[2] + " (" + ((3 * PublicVars.Instance.buildingCounts[2]) + (-3 * PublicVars.Instance.buildingCounts[3]) + (-1 * PublicVars.Instance.buildingCounts[4]) + (-3 * PublicVars.Instance.buildingCounts[1])) + ")";
         populationText.text = "Population: " + PublicVars.Instance.playerResources[0] + " (" + ((3 * PublicVars.Instance.buildingCounts[0]) + (-3 * PublicVars.Instance.buildingCounts[2]) + (-4 * PublicVars.Instance.buildingCounts[1]) + (-4 * PublicVars.Instance.buildingCounts[5])) + ")";
