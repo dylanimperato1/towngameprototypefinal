@@ -25,7 +25,7 @@ public class EnemyAI : MonoBehaviour
 
         //make "Enemy Attacked!" text appear for 0.75 seconds after the attack happens
 
-        if (timer > 25) {
+        if (timer > 5) {
             AlterPlayerResources();
             enemyAttackedText.alpha = 1f;
             timer = 0;
@@ -39,7 +39,7 @@ public class EnemyAI : MonoBehaviour
     {
         int give_or_steal = Random.Range(0, 1);
         int res_to_alter = Random.Range(0, 5);
-        int val_to_alter = Random.Range(1, 30);
+        int val_to_alter = Random.Range(1, PublicVars.Instance.resourceCap/10);
         if (give_or_steal == 0)
         {
             PublicVars.Instance.playerResources[res_to_alter] -= val_to_alter;
@@ -52,23 +52,4 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    /*
-    IEnumerator AlterPlayerResources()
-    {
-        int give_or_steal = Random.Range(0, 1);
-        int res_to_alter = Random.Range(0, 5);
-        int val_to_alter = Random.Range(1, 10);
-        yield return new WaitForSeconds(100);
-        if (give_or_steal == 0)
-        {
-            PublicVars.playerResources[res_to_alter] -= val_to_alter;
-            PublicVars.enemyResources[res_to_alter] += val_to_alter;
-        }
-        else
-        {
-            PublicVars.playerResources[res_to_alter] += val_to_alter;
-            PublicVars.enemyResources[res_to_alter] -= val_to_alter;
-        }
-        
-    } */
 }

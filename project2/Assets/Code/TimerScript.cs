@@ -12,6 +12,7 @@ public class TimerScript : MonoBehaviour
 
     public TextMeshProUGUI timerText;
 
+    public TextMeshProUGUI capText;
     public TextMeshProUGUI foodText;
     public TextMeshProUGUI moneyText;
     public TextMeshProUGUI populationText;
@@ -91,7 +92,7 @@ public class TimerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateResourceDisplay();
+        
         elapsedTime += Time.deltaTime;
         elapsedTime2 += Time.deltaTime;
 
@@ -102,7 +103,7 @@ public class TimerScript : MonoBehaviour
             FiveSecondMark();
             elapsedTime2 -= 5.0f;
         }
-        
+        UpdateResourceDisplay();
     }
 
     void UpdateTimeDisplay()
@@ -116,22 +117,23 @@ public class TimerScript : MonoBehaviour
     //0             1       2    3     4    5
     void UpdateResourceDisplay()
     {
-        foodText.text = "Food: " + PublicVars.Instance.playerResources[3] + " (" + ((2 * PublicVars.Instance.buildingCounts[3]) + (-2 * PublicVars.Instance.buildingCounts[0]) + (-2 * PublicVars.Instance.buildingCounts[4])) + ")";
-        moneyText.text = "Money: " + PublicVars.Instance.playerResources[2] + " (" + ((3 * PublicVars.Instance.buildingCounts[2]) + (-3 * PublicVars.Instance.buildingCounts[3]) + (-1 * PublicVars.Instance.buildingCounts[4]) + (-3 * PublicVars.Instance.buildingCounts[1])) + ")";
-        populationText.text = "Population: " + PublicVars.Instance.playerResources[0] + " (" + ((3 * PublicVars.Instance.buildingCounts[0]) + (-3 * PublicVars.Instance.buildingCounts[2]) + (-4 * PublicVars.Instance.buildingCounts[1]) + (-4 * PublicVars.Instance.buildingCounts[5])) + ")";
-        armyText.text = "Army: " + PublicVars.Instance.playerResources[4] + " (" + (4 * PublicVars.Instance.buildingCounts[4]) + ")";
-        stoneText.text = "Stone: " + PublicVars.Instance.playerResources[1] + " (" + (4 * PublicVars.Instance.buildingCounts[1]) + ")";
-        waterText.text = "Water: " + PublicVars.Instance.playerResources[5] + " (" + ((2 * PublicVars.Instance.buildingCounts[5]) + (-1 * PublicVars.Instance.buildingCounts[3]) + (-4 * PublicVars.Instance.buildingCounts[0])) + ")";
+        capText.text = "Max: " + PublicVars.Instance.resourceCap;
+        foodText.text = "Food: " + PublicVars.Instance.playerResources[3] + " (" + ((4 * PublicVars.Instance.buildingCounts[3]) + (-2 * PublicVars.Instance.buildingCounts[5])) + ")";
+        moneyText.text = "Money: " + PublicVars.Instance.playerResources[2] + " (" + ((4 * PublicVars.Instance.buildingCounts[2]) + (4 * PublicVars.Instance.buildingCounts[0])) + ")";
+        populationText.text = "Population: " + PublicVars.Instance.playerResources[0] + " (" + ((4 * PublicVars.Instance.buildingCounts[0]) + (-2 * PublicVars.Instance.buildingCounts[2]) + (-2 * PublicVars.Instance.buildingCounts[5]) + (-2 * PublicVars.Instance.buildingCounts[3])) + ")";
+        armyText.text = "Army: " + PublicVars.Instance.playerResources[4] + " (" + ((4 * PublicVars.Instance.buildingCounts[4]) + (2 * PublicVars.Instance.buildingCounts[2]) + (-4 * PublicVars.Instance.buildingCounts[0])) + ")";
+        stoneText.text = "Stone: " + PublicVars.Instance.playerResources[1] + " (" + ((6 * PublicVars.Instance.buildingCounts[1])) + ")";
+        waterText.text = "Water: " + PublicVars.Instance.playerResources[5] + " (" + ((4 * PublicVars.Instance.buildingCounts[5]) + (-2 * PublicVars.Instance.buildingCounts[1])) + ")";
     }
 
     void UpdateResources()
     {
-        PublicVars.Instance.playerResources[3] += (2 * PublicVars.Instance.buildingCounts[3]) + (-4 * PublicVars.Instance.buildingCounts[0]) + (-2 * PublicVars.Instance.buildingCounts[4]);
-        PublicVars.Instance.playerResources[2] += (1 * PublicVars.Instance.buildingCounts[2]) + (-1 * PublicVars.Instance.buildingCounts[3]) + (-1 * PublicVars.Instance.buildingCounts[4]) + (-3 * PublicVars.Instance.buildingCounts[1]);
-        PublicVars.Instance.playerResources[0] += (3 * PublicVars.Instance.buildingCounts[0]) + (-3 * PublicVars.Instance.buildingCounts[2]) + (-4 * PublicVars.Instance.buildingCounts[1]) + (-4 * PublicVars.Instance.buildingCounts[5]);
-        PublicVars.Instance.playerResources[4] += (4 * PublicVars.Instance.buildingCounts[4]);
-        PublicVars.Instance.playerResources[1] += (5 * PublicVars.Instance.buildingCounts[1]);
-        PublicVars.Instance.playerResources[5] += (2 * PublicVars.Instance.buildingCounts[5]) + (-8 * PublicVars.Instance.buildingCounts[3]) + (-4 * PublicVars.Instance.buildingCounts[0]);
+        PublicVars.Instance.playerResources[3] += (4 * PublicVars.Instance.buildingCounts[3]) + (-2 * PublicVars.Instance.buildingCounts[5]);
+        PublicVars.Instance.playerResources[2] += (4 * PublicVars.Instance.buildingCounts[2]) + (4 * PublicVars.Instance.buildingCounts[0]);
+        PublicVars.Instance.playerResources[0] += (4 * PublicVars.Instance.buildingCounts[0]) + (-2 * PublicVars.Instance.buildingCounts[2]) + (-2 * PublicVars.Instance.buildingCounts[5]) + (-2 * PublicVars.Instance.buildingCounts[3]);
+        PublicVars.Instance.playerResources[4] += (4 * PublicVars.Instance.buildingCounts[4]) + (2 * PublicVars.Instance.buildingCounts[2]) + (-4 * PublicVars.Instance.buildingCounts[0]);
+        PublicVars.Instance.playerResources[1] += (6 * PublicVars.Instance.buildingCounts[1]);
+        PublicVars.Instance.playerResources[5] += (4 * PublicVars.Instance.buildingCounts[5]) + (-2 * PublicVars.Instance.buildingCounts[1]);
     }
 
     void FiveSecondMark()
@@ -139,41 +141,4 @@ public class TimerScript : MonoBehaviour
         UpdateResources();
         Debug.Log("5 seconds have passed");
     }
-
-    /*
-    void CountBuildings()
-    {
-        BuildingScript[] buildings = FindObjectsOfType<BuildingScript>();
-        PublicVars.Instance.buildingCounts[3] = 0;
-        PublicVars.Instance.buildingCounts[2] = 0;
-        PublicVars.Instance.buildingCounts[0] = 0;
-        PublicVars.Instance.buildingCounts[4] = 0;
-        PublicVars.Instance.buildingCounts[1] = 0;
-        PublicVars.Instance.buildingCounts[5] = 0;
-
-        foreach (BuildingScript building in buildings)
-        {
-            switch (building.buildingType)
-            {
-                case BuildingScript.BuildingType.FoodBuilding:
-                    PublicVars.Instance.buildingCounts[3]++;
-                    break;
-                case BuildingScript.BuildingType.MoneyBuilding:
-                    PublicVars.Instance.buildingCounts[2]++;
-                    break;
-                case BuildingScript.BuildingType.PopulationBuilding:
-                    PublicVars.Instance.buildingCounts[0]++;
-                    break;
-                case BuildingScript.BuildingType.ArmyBuilding:
-                    PublicVars.Instance.buildingCounts[4]++;
-                    break;
-                case BuildingScript.BuildingType.StoneBuilding:
-                    PublicVars.Instance.buildingCounts[1]++;
-                    break;
-                case BuildingScript.BuildingType.WaterBuilding:
-                    PublicVars.Instance.buildingCounts[5]++;
-                    break;
-            }
-        }
-    }*/
 }
