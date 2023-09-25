@@ -102,7 +102,6 @@ public class TimerScript : MonoBehaviour
             FiveSecondMark();
             elapsedTime2 -= 5.0f;
         }
-        
     }
 
     void UpdateTimeDisplay()

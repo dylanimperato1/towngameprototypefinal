@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PublicVars : MonoBehaviour
 {
@@ -13,6 +14,12 @@ public class PublicVars : MonoBehaviour
     // enemyResources contains enemy's HP, money, army, food, population (in that order)
     public int[] buildingCounts = {1,1,1,1,1,1,1};
     public int resourceCap = 100;
+
+    public float time1;
+    public float time2;
+
+    //public int fail;
+
     private void Awake(){
          Instance = this;
     }
@@ -29,4 +36,5 @@ public class PublicVars : MonoBehaviour
     public static int enemyFood = 50;
     public static int enemyPop = 50;
     */
+
 }

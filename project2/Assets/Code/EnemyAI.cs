@@ -39,7 +39,7 @@ public class EnemyAI : MonoBehaviour
     {
         int give_or_steal = Random.Range(0, 1);
         int res_to_alter = Random.Range(0, 5);
-        int val_to_alter = Random.Range(1, 30);
+        int val_to_alter = Random.Range(1, 20);
         if (give_or_steal == 0)
         {
             PublicVars.Instance.playerResources[res_to_alter] -= val_to_alter;
