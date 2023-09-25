@@ -8,6 +8,7 @@ public class Buttons : MonoBehaviour
     public GameObject StartButton;
     public GameObject QuitButton;
     public GameObject HowToButton;
+    public GameObject NextButton;
     //public GameObject pauseMenu;
 
     public void startBtn()
@@ -35,6 +36,11 @@ public class Buttons : MonoBehaviour
     public void howToBtn()
     {
         SceneManager.LoadScene("HowToScene");
+    }
+
+    public void nextBtn()
+    {
+        SceneManager.LoadScene("HowTo2Scene");
     }
 
     //void pauseBtn()
